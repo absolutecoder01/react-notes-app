@@ -37,7 +37,9 @@ export default function App() {
         )
         );
     };
-
+    const deleteNote = (noteId) => {
+        setNotes(prev => prev.filter(note => note.id !== noteId))
+    }
     return (
         <div
             className="p-8 flex"
@@ -55,6 +57,7 @@ export default function App() {
                     onDragStart={onDragStart}
                     onDrop={onDrop}
                     editNote={editNote}
+                    deleteNote={deleteNote}
                     />
                 </div>
             ))}

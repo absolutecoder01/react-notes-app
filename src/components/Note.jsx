@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Note({note , onDragStart, onEdit }){
+export default function Note({note , onDragStart, onEdit, onDelete}){
     return (
         <>
         <div
@@ -9,13 +9,19 @@ export default function Note({note , onDragStart, onEdit }){
         onDragStart={(e) => onDragStart(e, note.id)}
         >
             {note.text}
-        </div>
+
         <button
-            className="p-1 m-1 bg-blue-800 rounded cursor-pointer text-white ml-3 px-20"
+            className="p-1 m-1 bg-blue-800 rounded cursor-pointer text-white px-10"
             onClick={() => onEdit(note.id, note.text)}
         >
             Edytuj
         </button>
+        <button
+            className="p-1 m-1 bg-red-800 rounded cursor-pointer text-white px-10"
+            onClick={() => onDelete(note.id)}
+        >Usun </button>
+        </div>
+
         </>
     )
 }

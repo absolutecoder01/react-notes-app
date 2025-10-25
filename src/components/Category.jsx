@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
 
-export default function Category({ category, notes, onDragStart, onDrop, editNote }){
+export default function Category({ category, notes, onDragStart, onDrop, editNote, deleteNote }){
     const handleDrop = (e) => {
         e.preventDefault();
         const noteId = e.dataTransfer.getData("noteId");
@@ -24,7 +24,8 @@ export default function Category({ category, notes, onDragStart, onDrop, editNot
                 key={note.id} 
                 note={note} 
                 onDragStart={onDragStart} 
-                onEdit={editNote}/>
+                onEdit={editNote}
+                onDelete={deleteNote}/>
             ))}
         </div>
     );
