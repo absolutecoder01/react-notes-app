@@ -29,6 +29,15 @@ export default function App() {
         setNotes((prev) => [...prev, newNote]);
     };
 
+    const editNote = (noteId, currentText) => {
+        const newText = prompt("Edytuj notatkę: ", currentText);
+        if (!newText) return;
+        setNotes((prev) => prev.map(note => 
+            note.id === noteId ? { ...note, text: newText } : note
+        )
+        );
+    };
+
     return (
         <div
             className="p-8 flex"
@@ -45,6 +54,7 @@ export default function App() {
                     notes={notes.filter((n) => n.categoryId === cat.id)}
                     onDragStart={onDragStart}
                     onDrop={onDrop}
+                    editNote={editNote}
                     />
                 </div>
             ))}
